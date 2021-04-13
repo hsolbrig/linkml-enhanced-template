@@ -1,0 +1,20 @@
+BASE <https://example.org/linkml/hello-world/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX sdo: <https://schema.org/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+
+<String> xsd:string
+
+<Person> CLOSED {
+    (  $<Person_tes> (  sdo:givenName @<String> + ;
+          sdo:familyName @<String> ;
+          foaf:knows @<Person> *
+       ) ;
+       rdf:type [ sdo:Person ]
+    )
+}
+
+
+

@@ -1,0 +1,94 @@
+{
+   "$id": "http://example.org/sample/person",
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "definitions": {
+      "FriendlyPerson": {
+         "additionalProperties": false,
+         "description": "A person that knows at least one other person",
+         "properties": {
+            "age": {
+               "description": "The age of a person if living or age of death if not",
+               "type": "integer"
+            },
+            "first_name": {
+               "description": "The first name of a person",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "id": {
+               "description": "The unique identifier of a person",
+               "type": "string"
+            },
+            "knows": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "last_name": {
+               "description": "The last name of a person",
+               "type": "string"
+            },
+            "living": {
+               "description": "Whether the person is alive",
+               "type": "boolean"
+            }
+         },
+         "required": [
+            "id",
+            "last_name",
+            "knows"
+         ],
+         "title": "FriendlyPerson",
+         "type": "object"
+      },
+      "Person": {
+         "additionalProperties": false,
+         "description": "A person, living or dead",
+         "properties": {
+            "age": {
+               "description": "The age of a person if living or age of death if not",
+               "type": "integer"
+            },
+            "first_name": {
+               "description": "The first name of a person",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "id": {
+               "description": "The unique identifier of a person",
+               "type": "string"
+            },
+            "knows": {
+               "description": "A person known by this person (indicating some level of reciprocated interaction between the parties).",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "last_name": {
+               "description": "The last name of a person",
+               "type": "string"
+            },
+            "living": {
+               "description": "Whether the person is alive",
+               "type": "boolean"
+            }
+         },
+         "required": [
+            "id",
+            "last_name"
+         ],
+         "title": "Person",
+         "type": "object"
+      }
+   },
+   "properties": {},
+   "title": "person",
+   "type": "object"
+}
+

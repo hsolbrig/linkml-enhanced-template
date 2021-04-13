@@ -1,0 +1,90 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix linkml: <https://w3id.org/linkml/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.org/linkml/person> a owl:Ontology ;
+    rdfs:label "person" ;
+    dcterms:license "https://creativecommons.org/publicdomain/zero/1.0/" ;
+    dcterms:title "Really basic person model" ;
+    linkml:generation_date "2021-04-06 16:21" ;
+    linkml:metamodel_version "1.7.0" ;
+    linkml:source_file "basic.yaml" ;
+    linkml:source_file_date "Tue Apr  6 15:55:58 2021" ;
+    linkml:source_file_size 827 .
+
+linkml:SubsetDefinition a owl:Class ;
+    rdfs:label "subset_definition" ;
+    skos:definition "the name and description of a subset" .
+
+linkml:person__first_name a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "person__first_name" ;
+    rdfs:range <https://example.org/linkml/hello-world/String> .
+
+linkml:person__id a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "person__id" ;
+    rdfs:range <https://example.org/linkml/hello-world/String> .
+
+linkml:person__knows a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "person__knows" ;
+    rdfs:range <https://example.org/linkml/hello-world/Person> .
+
+linkml:person__last_name a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "person__last_name" ;
+    rdfs:range <https://example.org/linkml/hello-world/String> .
+
+linkml:ClassDefinition a owl:Class ;
+    rdfs:label "class_definition" ;
+    skos:definition "the definition of a class or interface" .
+
+linkml:TypeDefinition a owl:Class ;
+    rdfs:label "type_definition" ;
+    skos:definition "A data type definition." .
+
+linkml:topValue a owl:DatatypeProperty ;
+    rdfs:label "value" .
+
+<https://example.org/linkml/hello-world/Person> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Person" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass <https://example.org/linkml/hello-world/String> ;
+            owl:onProperty linkml:id ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://example.org/linkml/hello-world/Person> ;
+            owl:onProperty linkml:knows ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:allValuesFrom <https://example.org/linkml/hello-world/String> ;
+                        owl:onProperty linkml:first_name ] [ a owl:Restriction ;
+                        owl:onProperty linkml:first_name ;
+                        owl:someValuesFrom <https://example.org/linkml/hello-world/String> ] ) ],
+        [ a owl:Restriction ;
+            owl:onClass <https://example.org/linkml/hello-world/String> ;
+            owl:onProperty linkml:last_name ;
+            owl:qualifiedCardinality 1 ] ;
+    skos:definition "Minimal information about a person" ;
+    skos:exactMatch <https://schema.org/Person> .
+
+linkml:SlotDefinition a owl:Class ;
+    rdfs:label "slot_definition" ;
+    skos:definition "the definition of a property or a slot" .
+
+<https://example.org/linkml/hello-world/String> a owl:Class,
+        linkml:TypeDefinition ;
+    rdfs:label "string" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty linkml:topValue ;
+            owl:qualifiedCardinality 1 ] .
+
+
+

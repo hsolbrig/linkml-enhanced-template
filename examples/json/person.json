@@ -1,0 +1,267 @@
+{
+  "name": "person",
+  "description": "A small example of a particular view of a person",
+  "id": "http://example.org/sample/person",
+  "prefixes": [
+    {
+      "prefix_prefix": "linkml",
+      "prefix_reference": "https://w3id.org/linkml/"
+    },
+    {
+      "prefix_prefix": "foaf",
+      "prefix_reference": "http://xmlns.com/foaf/0.1/"
+    },
+    {
+      "prefix_prefix": "pers",
+      "prefix_reference": "http://example.org/sample/person/"
+    }
+  ],
+  "default_curi_maps": [
+    "semweb_context"
+  ],
+  "default_prefix": "pers",
+  "default_range": "string",
+  "types": [
+    {
+      "name": "string",
+      "definition_uri": "http://example.org/sample/person/String",
+      "from_schema": "http://example.org/sample/person",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "int",
+      "definition_uri": "http://example.org/sample/person/Int",
+      "from_schema": "http://example.org/sample/person",
+      "base": "int",
+      "uri": "http://www.w3.org/2001/XMLSchema#integer",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "boolean",
+      "definition_uri": "http://example.org/sample/person/Boolean",
+      "from_schema": "http://example.org/sample/person",
+      "base": "Bool",
+      "uri": "http://www.w3.org/2001/XMLSchema#boolean",
+      "@type": "TypeDefinition"
+    }
+  ],
+  "slots": [
+    {
+      "name": "person__id",
+      "description": "The unique identifier of a person",
+      "from_schema": "http://example.org/sample/person",
+      "range": "string",
+      "slot_uri": "http://example.org/sample/person/id",
+      "required": true,
+      "identifier": true,
+      "alias": "id",
+      "owner": "Person",
+      "domain_of": [
+        "Person"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "person__first_name",
+      "mappings": [
+        "foaf:firstName"
+      ],
+      "description": "The first name of a person",
+      "from_schema": "http://example.org/sample/person",
+      "range": "string",
+      "slot_uri": "http://xmlns.com/foaf/0.1/firstName",
+      "multivalued": true,
+      "alias": "first_name",
+      "owner": "Person",
+      "domain_of": [
+        "Person"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "person__last_name",
+      "mappings": [
+        "foaf:lastName"
+      ],
+      "description": "The last name of a person",
+      "from_schema": "http://example.org/sample/person",
+      "range": "string",
+      "slot_uri": "http://xmlns.com/foaf/0.1/lastName",
+      "required": true,
+      "alias": "last_name",
+      "owner": "Person",
+      "domain_of": [
+        "Person"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "person__living",
+      "description": "Whether the person is alive",
+      "comments": [
+        "if absent, state is unknown"
+      ],
+      "from_schema": "http://example.org/sample/person",
+      "range": "boolean",
+      "slot_uri": "http://example.org/sample/person/living",
+      "alias": "living",
+      "owner": "Person",
+      "domain_of": [
+        "Person"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "person__age",
+      "mappings": [
+        "foaf:age"
+      ],
+      "description": "The age of a person if living or age of death if not",
+      "from_schema": "http://example.org/sample/person",
+      "range": "int",
+      "slot_uri": "http://xmlns.com/foaf/0.1/age",
+      "alias": "age",
+      "owner": "Person",
+      "domain_of": [
+        "Person"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "person__knows",
+      "mappings": [
+        "foaf:knows"
+      ],
+      "description": "A person known by this person (indicating some level of reciprocated interaction between the parties).",
+      "from_schema": "http://example.org/sample/person",
+      "range": "Person",
+      "slot_uri": "http://xmlns.com/foaf/0.1/knows",
+      "multivalued": true,
+      "alias": "knows",
+      "owner": "Person",
+      "domain_of": [
+        "Person"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "friendly_person_knows",
+      "from_schema": "http://example.org/sample/person",
+      "is_a": "person__knows",
+      "domain": "FriendlyPerson",
+      "range": "Person",
+      "slot_uri": "http://example.org/sample/person/knows",
+      "multivalued": true,
+      "required": true,
+      "alias": "knows",
+      "owner": "FriendlyPerson",
+      "domain_of": [
+        "FriendlyPerson"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "knows",
+      "@type": "SlotDefinition"
+    }
+  ],
+  "classes": [
+    {
+      "name": "Person",
+      "definition_uri": "http://example.org/sample/person/Person",
+      "mappings": [
+        "foaf:Person"
+      ],
+      "description": "A person, living or dead",
+      "from_schema": "http://example.org/sample/person",
+      "slots": [
+        "person__id",
+        "person__first_name",
+        "person__last_name",
+        "person__living",
+        "person__age",
+        "person__knows"
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "description": "The unique identifier of a person",
+          "identifier": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "first_name",
+          "description": "The first name of a person",
+          "slot_uri": "foaf:firstName",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "last_name",
+          "description": "The last name of a person",
+          "slot_uri": "foaf:lastName",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "living",
+          "description": "Whether the person is alive",
+          "comments": [
+            "if absent, state is unknown"
+          ],
+          "range": "boolean",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "age",
+          "description": "The age of a person if living or age of death if not",
+          "range": "int",
+          "slot_uri": "foaf:age",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "knows",
+          "description": "A person known by this person (indicating some level of reciprocated interaction between the parties).",
+          "range": "Person",
+          "slot_uri": "foaf:knows",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "http://xmlns.com/foaf/0.1/Person",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "FriendlyPerson",
+      "definition_uri": "http://example.org/sample/person/FriendlyPerson",
+      "description": "A person that knows at least one other person",
+      "from_schema": "http://example.org/sample/person",
+      "is_a": "Person",
+      "slots": [
+        "person__id",
+        "person__first_name",
+        "person__last_name",
+        "person__living",
+        "person__age",
+        "friendly_person_knows"
+      ],
+      "class_uri": "http://example.org/sample/person/FriendlyPerson",
+      "@type": "ClassDefinition"
+    }
+  ],
+  "metamodel_version": "1.7.0",
+  "source_file": "person.yaml",
+  "source_file_date": "Tue Apr  6 15:04:41 2021",
+  "source_file_size": 1517,
+  "generation_date": "2021-04-08 14:00",
+  "@type": "SchemaDefinition",
+  "@context": [
+    [
+      "https://w3id.org/linkml/meta.context.jsonld"
+    ],
+    {
+      "@base": "http://example.org/sample/person/"
+    }
+  ]
+}
+

@@ -1,0 +1,103 @@
+@prefix : <https://example.org/linkml/hello-world/> .
+@prefix ex: <https://example.org/linkml/hello-world/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.org/linkml/person> a ex:SchemaDefinition ;
+    ex:classes [ a ex:ClassDefinition ;
+            ex:attributes [ a ex:SlotDefinition ;
+                    ex:identifier true ;
+                    ex:name "id" ;
+                    ex:slot_uri "sdo:taxID" ],
+                [ a ex:SlotDefinition ;
+                    ex:multivalued true ;
+                    ex:name "knows" ;
+                    ex:range "Person" ;
+                    ex:slot_uri "foaf:knows" ],
+                [ a ex:SlotDefinition ;
+                    ex:multivalued true ;
+                    ex:name "first_name" ;
+                    ex:required true ;
+                    ex:slot_uri "sdo:givenName" ],
+                [ a ex:SlotDefinition ;
+                    ex:name "last_name" ;
+                    ex:required true ;
+                    ex:slot_uri "sdo:familyName" ] ;
+            ex:class_uri "https://schema.org/Person" ;
+            ex:definition_uri "https://example.org/linkml/hello-world/Person" ;
+            ex:description "Minimal information about a person" ;
+            ex:from_schema "https://example.org/linkml/person" ;
+            ex:mappings "sdo:Person" ;
+            ex:name "Person" ;
+            ex:slots "person__first_name",
+                "person__id",
+                "person__knows",
+                "person__last_name" ] ;
+    ex:default_curi_maps "semweb_context" ;
+    ex:default_prefix "ex" ;
+    ex:default_range "string" ;
+    ex:generation_date "2021-04-08 14:00" ;
+    ex:license "https://creativecommons.org/publicdomain/zero/1.0/" ;
+    ex:metamodel_version "1.7.0" ;
+    ex:name "person" ;
+    ex:prefixes [ ex:prefix_prefix "sdo" ;
+            ex:prefix_reference "https://schema.org/" ],
+        [ ex:prefix_prefix "ex" ;
+            ex:prefix_reference "https://example.org/linkml/hello-world/" ],
+        [ ex:prefix_prefix "linkml" ;
+            ex:prefix_reference "https://w3id.org/linkml/" ] ;
+    ex:slots [ a ex:SlotDefinition ;
+            ex:alias "id" ;
+            ex:domain_of "Person" ;
+            ex:from_schema "https://example.org/linkml/person" ;
+            ex:identifier true ;
+            ex:mappings "sdo:taxID" ;
+            ex:name "person__id" ;
+            ex:owner "Person" ;
+            ex:range "string" ;
+            ex:required true ;
+            ex:slot_uri "https://schema.org/taxID" ],
+        [ a ex:SlotDefinition ;
+            ex:alias "knows" ;
+            ex:domain_of "Person" ;
+            ex:from_schema "https://example.org/linkml/person" ;
+            ex:mappings "foaf:knows" ;
+            ex:multivalued true ;
+            ex:name "person__knows" ;
+            ex:owner "Person" ;
+            ex:range "Person" ;
+            ex:slot_uri "http://xmlns.com/foaf/0.1/knows" ],
+        [ a ex:SlotDefinition ;
+            ex:alias "last_name" ;
+            ex:domain_of "Person" ;
+            ex:from_schema "https://example.org/linkml/person" ;
+            ex:mappings "sdo:familyName" ;
+            ex:name "person__last_name" ;
+            ex:owner "Person" ;
+            ex:range "string" ;
+            ex:required true ;
+            ex:slot_uri "https://schema.org/familyName" ],
+        [ a ex:SlotDefinition ;
+            ex:alias "first_name" ;
+            ex:domain_of "Person" ;
+            ex:from_schema "https://example.org/linkml/person" ;
+            ex:mappings "sdo:givenName" ;
+            ex:multivalued true ;
+            ex:name "person__first_name" ;
+            ex:owner "Person" ;
+            ex:range "string" ;
+            ex:required true ;
+            ex:slot_uri "https://schema.org/givenName" ] ;
+    ex:source_file "basic.yaml" ;
+    ex:source_file_date "Tue Apr  6 15:55:58 2021" ;
+    ex:source_file_size 827 ;
+    ex:title "Really basic person model" ;
+    ex:types [ a ex:TypeDefinition ;
+            ex:base "str" ;
+            ex:definition_uri "https://example.org/linkml/hello-world/String" ;
+            ex:from_schema "https://example.org/linkml/person" ;
+            ex:name "string" ;
+            ex:uri "http://www.w3.org/2001/XMLSchema#string" ] ;
+    ex:version "0.0.1" .
+
+
+

@@ -1,0 +1,93 @@
+id: https://examples.org/linkml/person
+name: person
+description: A small excerpt from the schema.org model
+comments: This model was devloped as part of a tutorial on LinkML Enumerations
+
+prefixes:
+  sdo: https://schema.org/
+  xsd: http://www.w3.org/2001/XMLSchema#
+
+default_prefix: sdo
+default_range: Text
+
+types:
+  Text:
+    uri: xsd:string
+    base: str
+    description: A character string
+
+  URL:
+    uri: xsd:anyURI
+    base: URIorCURIE
+    repr: str
+    description: a URI or a CURIE
+
+slots:
+  identifier:
+    description: |-
+      The identifier property represents any kind of identifier for any kind of Thing, such as ISBNs, GTIN codes,
+      UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings
+      or as URL (URI) links. See background notes for more details.
+    multivalued: true
+  url:
+    description: URL of the item
+    range: URL
+    key: true
+  name:
+    description: The name of the item.
+    required: true
+  additionalName:
+    description: An additional name for a person, can be used as a middle name.
+    multivalued: true
+  givenName:
+    description: Given name. In the U.S., the first name of a Person.
+    multivalued: true
+  gender:
+    description: Person gender
+    range: gender_enum
+
+classes:
+  Thing:
+    description: The most generic type of item.
+    slots:
+      - identifier
+      - url
+      - name
+
+  Person:
+    is_a: Thing
+    description: A person (alive, dead, undead, or fictional).
+    slots:
+      - givenName
+      - additionalName
+      - gender
+
+
+enums:
+  gender_enum:
+    description: |-
+      Gender of something, typically a Person, but possibly also fictional characters, animals, etc.
+      While https://schema.org/Male and https://schema.org/Female may be used, text strings are also acceptable
+      for people who do not identify as a binary gender. The gender property can also be used in an extended
+      sense to cover e.g. the gender of sports teams. As with the gender of individuals, we do not try to
+      enumerate all possibilities. A mixed-gender SportsTeam can be indicated with a text value of "Mixed".
+    permissible_values:
+      0: Male Gender
+      1: Female Gender
+      8: Mixed Gender
+
+  gender_enum_2:
+    code_set: sdo:GenderType
+    permissible_values:
+      0:
+        description: Male Gender
+        meaning: sdo:Male
+      1:
+        description: Female Gender
+        meaning: sdo:Female
+      8:
+        description: Mixed Gender
+
+  gender_enum_3:
+    code_set: sdo:GenderType
+    pv_formula: CODE

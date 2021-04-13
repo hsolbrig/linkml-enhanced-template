@@ -1,0 +1,9 @@
+type Person
+  {
+    id: String!
+    firstName: [String]!
+    lastName: String!
+    knows: [Person]
+  }
+
+

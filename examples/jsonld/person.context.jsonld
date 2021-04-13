@@ -1,0 +1,31 @@
+{
+   "_comments": "Auto generated from person.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2021-04-07 09:27\n    Schema: person\n    \n    id: http://example.org/sample/person\n    description: A small example of a particular view of a person\n    license: \n    ",
+   "@context": {
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "linkml": "https://w3id.org/linkml/",
+      "pers": "http://example.org/sample/person/",
+      "@vocab": "http://example.org/sample/person/",
+      "age": {
+         "@type": "xsd:integer",
+         "@id": "foaf:age"
+      },
+      "first_name": {
+         "@id": "foaf:firstName"
+      },
+      "id": "@id",
+      "knows": {
+         "@type": "@id",
+         "@id": "foaf:knows"
+      },
+      "last_name": {
+         "@id": "foaf:lastName"
+      },
+      "living": {
+         "@type": "xsd:boolean"
+      },
+      "Person": {
+         "@id": "foaf:Person"
+      }
+   }
+}
+

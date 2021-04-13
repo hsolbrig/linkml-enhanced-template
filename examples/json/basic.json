@@ -1,0 +1,166 @@
+{
+  "name": "person",
+  "id": "https://example.org/linkml/person",
+  "title": "Really basic person model",
+  "version": "0.0.1",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "prefixes": [
+    {
+      "prefix_prefix": "linkml",
+      "prefix_reference": "https://w3id.org/linkml/"
+    },
+    {
+      "prefix_prefix": "sdo",
+      "prefix_reference": "https://schema.org/"
+    },
+    {
+      "prefix_prefix": "ex",
+      "prefix_reference": "https://example.org/linkml/hello-world/"
+    }
+  ],
+  "default_curi_maps": [
+    "semweb_context"
+  ],
+  "default_prefix": "ex",
+  "default_range": "string",
+  "types": [
+    {
+      "name": "string",
+      "definition_uri": "https://example.org/linkml/hello-world/String",
+      "from_schema": "https://example.org/linkml/person",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "@type": "TypeDefinition"
+    }
+  ],
+  "slots": [
+    {
+      "name": "person__id",
+      "mappings": [
+        "sdo:taxID"
+      ],
+      "from_schema": "https://example.org/linkml/person",
+      "range": "string",
+      "slot_uri": "https://schema.org/taxID",
+      "required": true,
+      "identifier": true,
+      "alias": "id",
+      "owner": "Person",
+      "domain_of": [
+        "Person"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "person__first_name",
+      "mappings": [
+        "sdo:givenName"
+      ],
+      "from_schema": "https://example.org/linkml/person",
+      "range": "string",
+      "slot_uri": "https://schema.org/givenName",
+      "multivalued": true,
+      "required": true,
+      "alias": "first_name",
+      "owner": "Person",
+      "domain_of": [
+        "Person"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "person__last_name",
+      "mappings": [
+        "sdo:familyName"
+      ],
+      "from_schema": "https://example.org/linkml/person",
+      "range": "string",
+      "slot_uri": "https://schema.org/familyName",
+      "required": true,
+      "alias": "last_name",
+      "owner": "Person",
+      "domain_of": [
+        "Person"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "person__knows",
+      "mappings": [
+        "foaf:knows"
+      ],
+      "from_schema": "https://example.org/linkml/person",
+      "range": "Person",
+      "slot_uri": "http://xmlns.com/foaf/0.1/knows",
+      "multivalued": true,
+      "alias": "knows",
+      "owner": "Person",
+      "domain_of": [
+        "Person"
+      ],
+      "@type": "SlotDefinition"
+    }
+  ],
+  "classes": [
+    {
+      "name": "Person",
+      "definition_uri": "https://example.org/linkml/hello-world/Person",
+      "mappings": [
+        "sdo:Person"
+      ],
+      "description": "Minimal information about a person",
+      "from_schema": "https://example.org/linkml/person",
+      "slots": [
+        "person__id",
+        "person__first_name",
+        "person__last_name",
+        "person__knows"
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "slot_uri": "sdo:taxID",
+          "identifier": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "first_name",
+          "slot_uri": "sdo:givenName",
+          "multivalued": true,
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "last_name",
+          "slot_uri": "sdo:familyName",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "knows",
+          "range": "Person",
+          "slot_uri": "foaf:knows",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://schema.org/Person",
+      "@type": "ClassDefinition"
+    }
+  ],
+  "metamodel_version": "1.7.0",
+  "source_file": "basic.yaml",
+  "source_file_date": "Tue Apr  6 15:55:58 2021",
+  "source_file_size": 827,
+  "generation_date": "2021-04-08 14:00",
+  "@type": "SchemaDefinition",
+  "@context": [
+    [
+      "https://w3id.org/linkml/meta.context.jsonld"
+    ],
+    {
+      "@base": "https://example.org/linkml/hello-world/"
+    }
+  ]
+}
+

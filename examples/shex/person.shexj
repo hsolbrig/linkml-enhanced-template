@@ -1,0 +1,141 @@
+{
+   "type": "Schema",
+   "@context": [
+      "http://www.w3.org/ns/shex.jsonld",
+      {
+         "@base": "http://example.org/sample/person/"
+      }
+   ],
+   "shapes": [
+      {
+         "type": "NodeConstraint",
+         "id": "http://example.org/sample/person/String",
+         "datatype": "http://www.w3.org/2001/XMLSchema#string"
+      },
+      {
+         "type": "NodeConstraint",
+         "id": "http://example.org/sample/person/Int",
+         "datatype": "http://www.w3.org/2001/XMLSchema#integer"
+      },
+      {
+         "type": "NodeConstraint",
+         "id": "http://example.org/sample/person/Boolean",
+         "datatype": "http://www.w3.org/2001/XMLSchema#boolean"
+      },
+      {
+         "type": "Shape",
+         "id": "http://example.org/sample/person/FriendlyPerson",
+         "closed": true,
+         "expression": {
+            "type": "EachOf",
+            "expressions": [
+               {
+                  "type": "EachOf",
+                  "id": "http://example.org/sample/person/FriendlyPerson_tes",
+                  "expressions": [
+                     "http://example.org/sample/person/Person_tes",
+                     {
+                        "type": "TripleConstraint",
+                        "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                        "valueExpr": {
+                           "type": "NodeConstraint",
+                           "values": [
+                              "http://xmlns.com/foaf/0.1/Person"
+                           ]
+                        },
+                        "min": 0
+                     },
+                     {
+                        "type": "TripleConstraint",
+                        "predicate": "http://example.org/sample/person/knows",
+                        "valueExpr": "http://example.org/sample/person/Person",
+                        "min": 1,
+                        "max": -1
+                     }
+                  ]
+               },
+               {
+                  "type": "TripleConstraint",
+                  "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                  "valueExpr": {
+                     "type": "NodeConstraint",
+                     "values": [
+                        "http://example.org/sample/person/FriendlyPerson"
+                     ]
+                  },
+                  "min": 1
+               }
+            ]
+         }
+      },
+      {
+         "type": "ShapeOr",
+         "id": "http://example.org/sample/person/Person",
+         "shapeExprs": [
+            {
+               "type": "Shape",
+               "closed": true,
+               "expression": {
+                  "type": "EachOf",
+                  "expressions": [
+                     {
+                        "type": "EachOf",
+                        "id": "http://example.org/sample/person/Person_tes",
+                        "expressions": [
+                           {
+                              "type": "TripleConstraint",
+                              "predicate": "http://xmlns.com/foaf/0.1/firstName",
+                              "valueExpr": "http://example.org/sample/person/String",
+                              "min": 0,
+                              "max": -1
+                           },
+                           {
+                              "type": "TripleConstraint",
+                              "predicate": "http://xmlns.com/foaf/0.1/lastName",
+                              "valueExpr": "http://example.org/sample/person/String",
+                              "min": 1,
+                              "max": 1
+                           },
+                           {
+                              "type": "TripleConstraint",
+                              "predicate": "http://example.org/sample/person/living",
+                              "valueExpr": "http://example.org/sample/person/Boolean",
+                              "min": 0,
+                              "max": 1
+                           },
+                           {
+                              "type": "TripleConstraint",
+                              "predicate": "http://xmlns.com/foaf/0.1/age",
+                              "valueExpr": "http://example.org/sample/person/Int",
+                              "min": 0,
+                              "max": 1
+                           },
+                           {
+                              "type": "TripleConstraint",
+                              "predicate": "http://xmlns.com/foaf/0.1/knows",
+                              "valueExpr": "http://example.org/sample/person/Person",
+                              "min": 0,
+                              "max": -1
+                           }
+                        ]
+                     },
+                     {
+                        "type": "TripleConstraint",
+                        "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                        "valueExpr": {
+                           "type": "NodeConstraint",
+                           "values": [
+                              "http://xmlns.com/foaf/0.1/Person"
+                           ]
+                        },
+                        "min": 1
+                     }
+                  ]
+               }
+            },
+            "http://example.org/sample/person/FriendlyPerson"
+         ]
+      }
+   ]
+}
+

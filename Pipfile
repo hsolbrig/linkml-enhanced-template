@@ -1,0 +1,14 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+requests = "*"
+rdflib = ">=5.0.0"
+pyld = { git = "https://github.com/hsolbrig/pyld"}
+
+[dev-packages]
+linkml = "*"
+mkdocs = "*"
+

@@ -1,0 +1,25 @@
+{
+   "_comments": "Auto generated from basic.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2021-04-07 09:27\n    Schema: person\n    \n    id: https://example.org/linkml/person\n    description: \n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "@context": {
+      "ex": "https://example.org/linkml/hello-world/",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "linkml": "https://w3id.org/linkml/",
+      "sdo": "https://schema.org/",
+      "@vocab": "https://example.org/linkml/hello-world/",
+      "first_name": {
+         "@id": "sdo:givenName"
+      },
+      "id": "@id",
+      "knows": {
+         "@type": "@id",
+         "@id": "foaf:knows"
+      },
+      "last_name": {
+         "@id": "sdo:familyName"
+      },
+      "Person": {
+         "@id": "sdo:Person"
+      }
+   }
+}
+

@@ -1,0 +1,121 @@
+Prefix(:=<http://www.semanticweb.org/solbrig/ontologies/2021/3/untitled-ontology-27#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://www.semanticweb.org/solbrig/ontologies/2021/3/untitled-ontology-27>
+
+Declaration(Class(<http://ncit.gov/caDSR/vmID#Arm>))
+Declaration(Class(<http://ncit.gov/caDSR/vmID#BodyPart>))
+Declaration(Class(<http://ncit.gov/caDSR/vmID#Fracture>))
+Declaration(Class(<http://ncit.gov/caDSR/vmID#Hand>))
+Declaration(Class(<http://ncit.gov/caDSR/vmID#Humerus>))
+Declaration(Class(<http://ncit.gov/caDSR/vmID#Laterality>))
+Declaration(Class(<http://ncit.gov/caDSR/vmID#Left>))
+Declaration(Class(<http://ncit.gov/caDSR/vmID#LeftHand>))
+Declaration(Class(<http://ncit.gov/caDSR/vmID#Leg>))
+Declaration(Class(<http://ncit.gov/caDSR/vmID#Radius>))
+Declaration(Class(<http://ncit.gov/caDSR/vmID#Right>))
+Declaration(Class(<http://ncit.gov/caDSR/vmID#RightHand>))
+Declaration(Class(<http://ncit.gov/caDSR/vmID#Ulna>))
+Declaration(ObjectProperty(<http://ncit.gov/caDSR/vmID#has_laterality>))
+Declaration(ObjectProperty(<http://ncit.gov/caDSR/vmID#has_location>))
+Declaration(ObjectProperty(<http://ncit.gov/caDSR/vmID#part_of>))
+Declaration(NamedIndividual(<http://ncit.gov/caDSR/vmID#MyBrokenArm>))
+Declaration(NamedIndividual(<http://ncit.gov/caDSR/vmID#MyUlna>))
+Declaration(NamedIndividual(<http://ncit.gov/caDSR/vmID#MyUlnaoLoc>))
+############################
+#   Object Properties
+############################
+
+# Object Property: <http://ncit.gov/caDSR/vmID#has_laterality> (<http://ncit.gov/caDSR/vmID#has_laterality>)
+
+ObjectPropertyRange(<http://ncit.gov/caDSR/vmID#has_laterality> <http://ncit.gov/caDSR/vmID#Laterality>)
+
+# Object Property: <http://ncit.gov/caDSR/vmID#has_location> (<http://ncit.gov/caDSR/vmID#has_location>)
+
+ObjectPropertyDomain(<http://ncit.gov/caDSR/vmID#has_location> <http://ncit.gov/caDSR/vmID#Fracture>)
+ObjectPropertyRange(<http://ncit.gov/caDSR/vmID#has_location> <http://ncit.gov/caDSR/vmID#BodyPart>)
+
+# Object Property: <http://ncit.gov/caDSR/vmID#part_of> (<http://ncit.gov/caDSR/vmID#part_of>)
+
+ObjectPropertyDomain(<http://ncit.gov/caDSR/vmID#part_of> <http://ncit.gov/caDSR/vmID#BodyPart>)
+ObjectPropertyRange(<http://ncit.gov/caDSR/vmID#part_of> <http://ncit.gov/caDSR/vmID#BodyPart>)
+
+
+############################
+#   Classes
+############################
+
+# Class: <http://ncit.gov/caDSR/vmID#Arm> (<http://ncit.gov/caDSR/vmID#Arm>)
+
+SubClassOf(<http://ncit.gov/caDSR/vmID#Arm> <http://ncit.gov/caDSR/vmID#BodyPart>)
+
+# Class: <http://ncit.gov/caDSR/vmID#Fracture> (<http://ncit.gov/caDSR/vmID#Fracture>)
+
+SubClassOf(<http://ncit.gov/caDSR/vmID#Fracture> ObjectExactCardinality(1 <http://ncit.gov/caDSR/vmID#has_location> <http://ncit.gov/caDSR/vmID#BodyPart>))
+SubClassOf(<http://ncit.gov/caDSR/vmID#Fracture> ObjectMaxCardinality(1 <http://ncit.gov/caDSR/vmID#has_laterality> <http://ncit.gov/caDSR/vmID#Laterality>))
+
+# Class: <http://ncit.gov/caDSR/vmID#Hand> (<http://ncit.gov/caDSR/vmID#Hand>)
+
+SubClassOf(<http://ncit.gov/caDSR/vmID#Hand> <http://ncit.gov/caDSR/vmID#BodyPart>)
+
+# Class: <http://ncit.gov/caDSR/vmID#Humerus> (<http://ncit.gov/caDSR/vmID#Humerus>)
+
+SubClassOf(<http://ncit.gov/caDSR/vmID#Humerus> ObjectIntersectionOf(<http://ncit.gov/caDSR/vmID#BodyPart> ObjectSomeValuesFrom(<http://ncit.gov/caDSR/vmID#part_of> <http://ncit.gov/caDSR/vmID#Arm>)))
+
+# Class: <http://ncit.gov/caDSR/vmID#Left> (<http://ncit.gov/caDSR/vmID#Left>)
+
+SubClassOf(<http://ncit.gov/caDSR/vmID#Left> <http://ncit.gov/caDSR/vmID#Laterality>)
+DisjointClasses(<http://ncit.gov/caDSR/vmID#Left> <http://ncit.gov/caDSR/vmID#Right>)
+
+# Class: <http://ncit.gov/caDSR/vmID#LeftHand> (<http://ncit.gov/caDSR/vmID#LeftHand>)
+
+EquivalentClasses(<http://ncit.gov/caDSR/vmID#LeftHand> ObjectIntersectionOf(<http://ncit.gov/caDSR/vmID#Hand> ObjectExactCardinality(1 <http://ncit.gov/caDSR/vmID#has_laterality> <http://ncit.gov/caDSR/vmID#Left>)))
+
+# Class: <http://ncit.gov/caDSR/vmID#Leg> (<http://ncit.gov/caDSR/vmID#Leg>)
+
+SubClassOf(<http://ncit.gov/caDSR/vmID#Leg> <http://ncit.gov/caDSR/vmID#BodyPart>)
+
+# Class: <http://ncit.gov/caDSR/vmID#Radius> (<http://ncit.gov/caDSR/vmID#Radius>)
+
+SubClassOf(<http://ncit.gov/caDSR/vmID#Radius> ObjectIntersectionOf(<http://ncit.gov/caDSR/vmID#BodyPart> ObjectSomeValuesFrom(<http://ncit.gov/caDSR/vmID#part_of> <http://ncit.gov/caDSR/vmID#Arm>)))
+
+# Class: <http://ncit.gov/caDSR/vmID#Right> (<http://ncit.gov/caDSR/vmID#Right>)
+
+SubClassOf(<http://ncit.gov/caDSR/vmID#Right> <http://ncit.gov/caDSR/vmID#Laterality>)
+
+# Class: <http://ncit.gov/caDSR/vmID#RightHand> (<http://ncit.gov/caDSR/vmID#RightHand>)
+
+EquivalentClasses(<http://ncit.gov/caDSR/vmID#RightHand> ObjectIntersectionOf(<http://ncit.gov/caDSR/vmID#Hand> ObjectExactCardinality(1 <http://ncit.gov/caDSR/vmID#has_laterality> <http://ncit.gov/caDSR/vmID#Right>)))
+SubClassOf(<http://ncit.gov/caDSR/vmID#RightHand> <http://ncit.gov/caDSR/vmID#Hand>)
+
+# Class: <http://ncit.gov/caDSR/vmID#Ulna> (<http://ncit.gov/caDSR/vmID#Ulna>)
+
+SubClassOf(<http://ncit.gov/caDSR/vmID#Ulna> ObjectIntersectionOf(<http://ncit.gov/caDSR/vmID#BodyPart> ObjectSomeValuesFrom(<http://ncit.gov/caDSR/vmID#part_of> <http://ncit.gov/caDSR/vmID#Arm>)))
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: <http://ncit.gov/caDSR/vmID#MyBrokenArm> (<http://ncit.gov/caDSR/vmID#MyBrokenArm>)
+
+ClassAssertion(<http://ncit.gov/caDSR/vmID#Fracture> <http://ncit.gov/caDSR/vmID#MyBrokenArm>)
+ObjectPropertyAssertion(<http://ncit.gov/caDSR/vmID#has_laterality> <http://ncit.gov/caDSR/vmID#MyBrokenArm> <http://ncit.gov/caDSR/vmID#MyUlnaoLoc>)
+ObjectPropertyAssertion(<http://ncit.gov/caDSR/vmID#has_location> <http://ncit.gov/caDSR/vmID#MyBrokenArm> <http://ncit.gov/caDSR/vmID#MyUlna>)
+
+# Individual: <http://ncit.gov/caDSR/vmID#MyUlna> (<http://ncit.gov/caDSR/vmID#MyUlna>)
+
+ClassAssertion(<http://ncit.gov/caDSR/vmID#Ulna> <http://ncit.gov/caDSR/vmID#MyUlna>)
+
+# Individual: <http://ncit.gov/caDSR/vmID#MyUlnaoLoc> (<http://ncit.gov/caDSR/vmID#MyUlnaoLoc>)
+
+ClassAssertion(<http://ncit.gov/caDSR/vmID#Left> <http://ncit.gov/caDSR/vmID#MyUlnaoLoc>)
+
+
+SubObjectPropertyOf(ObjectPropertyChain(<http://ncit.gov/caDSR/vmID#has_location>) <http://ncit.gov/caDSR/vmID#part_of>)
+)

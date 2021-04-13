@@ -1,0 +1,176 @@
+@prefix : <http://example.org/sample/person/> .
+@prefix pers: <http://example.org/sample/person/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/sample/person> a pers:SchemaDefinition ;
+    pers:classes [ a pers:ClassDefinition ;
+            pers:attributes [ a pers:SlotDefinition ;
+                    pers:description "The last name of a person" ;
+                    pers:name "last_name" ;
+                    pers:required true ;
+                    pers:slot_uri "foaf:lastName" ],
+                [ a pers:SlotDefinition ;
+                    pers:description "The unique identifier of a person" ;
+                    pers:identifier true ;
+                    pers:name "id" ],
+                [ a pers:SlotDefinition ;
+                    pers:description "The age of a person if living or age of death if not" ;
+                    pers:name "age" ;
+                    pers:range "int" ;
+                    pers:slot_uri "foaf:age" ],
+                [ a pers:SlotDefinition ;
+                    pers:description "The first name of a person" ;
+                    pers:multivalued true ;
+                    pers:name "first_name" ;
+                    pers:slot_uri "foaf:firstName" ],
+                [ a pers:SlotDefinition ;
+                    pers:description "A person known by this person (indicating some level of reciprocated interaction between the parties)." ;
+                    pers:multivalued true ;
+                    pers:name "knows" ;
+                    pers:range "Person" ;
+                    pers:slot_uri "foaf:knows" ],
+                [ a pers:SlotDefinition ;
+                    pers:comments "if absent, state is unknown" ;
+                    pers:description "Whether the person is alive" ;
+                    pers:name "living" ;
+                    pers:range "boolean" ] ;
+            pers:class_uri "http://xmlns.com/foaf/0.1/Person" ;
+            pers:definition_uri "http://example.org/sample/person/Person" ;
+            pers:description "A person, living or dead" ;
+            pers:from_schema "http://example.org/sample/person" ;
+            pers:mappings "foaf:Person" ;
+            pers:name "Person" ;
+            pers:slots "person__age",
+                "person__first_name",
+                "person__id",
+                "person__knows",
+                "person__last_name",
+                "person__living" ],
+        [ a pers:ClassDefinition ;
+            pers:class_uri "http://example.org/sample/person/FriendlyPerson" ;
+            pers:definition_uri "http://example.org/sample/person/FriendlyPerson" ;
+            pers:description "A person that knows at least one other person" ;
+            pers:from_schema "http://example.org/sample/person" ;
+            pers:is_a "Person" ;
+            pers:name "FriendlyPerson" ;
+            pers:slots "friendly_person_knows",
+                "person__age",
+                "person__first_name",
+                "person__id",
+                "person__last_name",
+                "person__living" ] ;
+    pers:default_curi_maps "semweb_context" ;
+    pers:default_prefix "pers" ;
+    pers:default_range "string" ;
+    pers:description "A small example of a particular view of a person" ;
+    pers:generation_date "2021-04-08 14:00" ;
+    pers:metamodel_version "1.7.0" ;
+    pers:name "person" ;
+    pers:prefixes [ pers:prefix_prefix "linkml" ;
+            pers:prefix_reference "https://w3id.org/linkml/" ],
+        [ pers:prefix_prefix "pers" ;
+            pers:prefix_reference "http://example.org/sample/person/" ],
+        [ pers:prefix_prefix "foaf" ;
+            pers:prefix_reference "http://xmlns.com/foaf/0.1/" ] ;
+    pers:slots [ a pers:SlotDefinition ;
+            pers:alias "id" ;
+            pers:description "The unique identifier of a person" ;
+            pers:domain_of "Person" ;
+            pers:from_schema "http://example.org/sample/person" ;
+            pers:identifier true ;
+            pers:name "person__id" ;
+            pers:owner "Person" ;
+            pers:range "string" ;
+            pers:required true ;
+            pers:slot_uri "http://example.org/sample/person/id" ],
+        [ a pers:SlotDefinition ;
+            pers:alias "age" ;
+            pers:description "The age of a person if living or age of death if not" ;
+            pers:domain_of "Person" ;
+            pers:from_schema "http://example.org/sample/person" ;
+            pers:mappings "foaf:age" ;
+            pers:name "person__age" ;
+            pers:owner "Person" ;
+            pers:range "int" ;
+            pers:slot_uri "http://xmlns.com/foaf/0.1/age" ],
+        [ a pers:SlotDefinition ;
+            pers:alias "last_name" ;
+            pers:description "The last name of a person" ;
+            pers:domain_of "Person" ;
+            pers:from_schema "http://example.org/sample/person" ;
+            pers:mappings "foaf:lastName" ;
+            pers:name "person__last_name" ;
+            pers:owner "Person" ;
+            pers:range "string" ;
+            pers:required true ;
+            pers:slot_uri "http://xmlns.com/foaf/0.1/lastName" ],
+        [ a pers:SlotDefinition ;
+            pers:alias "knows" ;
+            pers:description "A person known by this person (indicating some level of reciprocated interaction between the parties)." ;
+            pers:domain_of "Person" ;
+            pers:from_schema "http://example.org/sample/person" ;
+            pers:mappings "foaf:knows" ;
+            pers:multivalued true ;
+            pers:name "person__knows" ;
+            pers:owner "Person" ;
+            pers:range "Person" ;
+            pers:slot_uri "http://xmlns.com/foaf/0.1/knows" ],
+        [ a pers:SlotDefinition ;
+            pers:alias "living" ;
+            pers:comments "if absent, state is unknown" ;
+            pers:description "Whether the person is alive" ;
+            pers:domain_of "Person" ;
+            pers:from_schema "http://example.org/sample/person" ;
+            pers:name "person__living" ;
+            pers:owner "Person" ;
+            pers:range "boolean" ;
+            pers:slot_uri "http://example.org/sample/person/living" ],
+        [ a pers:SlotDefinition ;
+            pers:alias "first_name" ;
+            pers:description "The first name of a person" ;
+            pers:domain_of "Person" ;
+            pers:from_schema "http://example.org/sample/person" ;
+            pers:mappings "foaf:firstName" ;
+            pers:multivalued true ;
+            pers:name "person__first_name" ;
+            pers:owner "Person" ;
+            pers:range "string" ;
+            pers:slot_uri "http://xmlns.com/foaf/0.1/firstName" ],
+        [ a pers:SlotDefinition ;
+            pers:alias "knows" ;
+            pers:domain "FriendlyPerson" ;
+            pers:domain_of "FriendlyPerson" ;
+            pers:from_schema "http://example.org/sample/person" ;
+            pers:is_a "person__knows" ;
+            pers:is_usage_slot true ;
+            pers:multivalued true ;
+            pers:name "friendly_person_knows" ;
+            pers:owner "FriendlyPerson" ;
+            pers:range "Person" ;
+            pers:required true ;
+            pers:slot_uri "http://example.org/sample/person/knows" ;
+            pers:usage_slot_name "knows" ] ;
+    pers:source_file "person.yaml" ;
+    pers:source_file_date "Tue Apr  6 15:04:41 2021" ;
+    pers:source_file_size 1517 ;
+    pers:types [ a pers:TypeDefinition ;
+            pers:base "int" ;
+            pers:definition_uri "http://example.org/sample/person/Int" ;
+            pers:from_schema "http://example.org/sample/person" ;
+            pers:name "int" ;
+            pers:uri "http://www.w3.org/2001/XMLSchema#integer" ],
+        [ a pers:TypeDefinition ;
+            pers:base "Bool" ;
+            pers:definition_uri "http://example.org/sample/person/Boolean" ;
+            pers:from_schema "http://example.org/sample/person" ;
+            pers:name "boolean" ;
+            pers:uri "http://www.w3.org/2001/XMLSchema#boolean" ],
+        [ a pers:TypeDefinition ;
+            pers:base "str" ;
+            pers:definition_uri "http://example.org/sample/person/String" ;
+            pers:from_schema "http://example.org/sample/person" ;
+            pers:name "string" ;
+            pers:uri "http://www.w3.org/2001/XMLSchema#string" ] .
+
+
+

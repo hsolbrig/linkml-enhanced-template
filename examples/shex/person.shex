@@ -1,0 +1,36 @@
+BASE <http://example.org/sample/person/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+
+<String> xsd:string
+
+<Int> xsd:integer
+
+<Boolean> xsd:boolean
+
+<FriendlyPerson> CLOSED {
+    (  $<FriendlyPerson_tes> (  &<Person_tes> ;
+          rdf:type [ foaf:Person ] ? ;
+          <knows> @<Person> +
+       ) ;
+       rdf:type [ <FriendlyPerson> ]
+    )
+}
+
+<Person>  (
+    CLOSED {
+       (  $<Person_tes> (  foaf:firstName @<String> * ;
+             foaf:lastName @<String> ;
+             <living> @<Boolean> ? ;
+             foaf:age @<Int> ? ;
+             foaf:knows @<Person> *
+          ) ;
+          rdf:type [ foaf:Person ]
+       )
+    } OR @<FriendlyPerson>
+)
+
+
+

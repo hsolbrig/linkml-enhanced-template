@@ -1,0 +1,72 @@
+id: https://example.org/linkml/person
+title: Really basic person model
+name: person
+license: https://creativecommons.org/publicdomain/zero/1.0/
+version: 0.0.1
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  sdo: https://schema.org/
+  ex: https://example.org/linkml/hello-world/
+  geo: https://official.gov/geocenter/
+
+default_prefix: ex
+default_curi_maps:
+  - semweb_context
+
+imports:
+  - linkml:types
+
+types:
+  geocoordinate:
+    uri: geo:coord
+    base: str
+    description: A latitude/longitude geocoordinate
+
+slots:
+  person__id:
+    range: string
+    identifier: true
+    slot_uri: sdo:taxID
+    alias: id
+
+  person__name:
+    slot_uri: foaf:name
+
+  building__id:
+    range: geocoordinate
+    identifier: true
+    slot_uri: geo:land_coordinate
+    alias: id
+
+  id:
+    description: something that is named "id" (e.g. whose alias is "id")
+
+classes:
+  Person:
+    description: Minimal information about a person
+    class_uri: sdo:Person
+    slot_usage:
+      id:
+        range: string
+        identifier: true
+        slot_uri: sdo:taxID
+
+    attributes:
+      name:
+        description: the name of a person
+        slot_uri: foaf:name
+
+  Building:
+    description: An individual building, identified by its geographic coordinates
+    class_uri: sdo:Building
+    slot_usage:
+      id:
+        range: geocoordinate
+        identifier: true
+        slot_uri: geo:land_coordinate
+
+    attributes:
+      name:
+        description: the official name given to a building
+        slot_uri: usgs:structure_label
